@@ -19,10 +19,8 @@ Getting Started
 npm install
 
 # Start development live-reload server
-PORT=8080 npm run dev
+npm run start
 
-# Start production server:
-PORT=8080 npm start
 ```
 
 License
