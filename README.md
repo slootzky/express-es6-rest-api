@@ -1,7 +1,7 @@
-Express & ES6 REST API Boilerplate
+Digital home exercise
 ==================================
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+This is the api for the exercise
 
 - ES6 support via [babel](https://babeljs.io)
 - CORS support via [cors](https://github.com/troygoode/node-cors)
