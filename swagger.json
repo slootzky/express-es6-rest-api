@@ -1,0 +1,176 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple API to control a smart home.",
+    "version": "1.0.0",
+    "title": "Digital Home",
+    "termsOfService": "https://github.com/slootzky/express-es6-rest-api",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/slootzky/express-es6-rest-api/blob/master/LICENSE"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "device",
+      "description": "All devices in your home",
+      "externalDocs": {
+        "description": "Get the source code",
+        "url": "https://git.io/fpQMV"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/devices": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "summary": "Get a list of devices in the home",
+        "description": "",
+        "operationId": "getDevices",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devices/{deviceId}": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "summary": "Get device details",
+        "operationId": "getDevice",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "The device ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "Could not find device"
+          }
+        }
+      }
+    },
+    "/devices/{deviceId}/{attribute}": {
+      "patch": {
+        "tags": [
+          "device"
+        ],
+        "summary": "Updates a pet in the store with form data",
+        "description": "",
+        "operationId": "updatePetWithForm",
+        "consumes": [
+          "text/plain"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "The device ID",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "attribute",
+            "in": "path",
+            "description": "The attribute to change",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "value",
+            "description": "The new value for the attribute",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Could not find device"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Air Conditioner": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "integer"
+        },
+        "state": {
+          "type": "string",
+          "description": "Current operation state",
+          "enum": [
+            "cool",
+            "warm",
+            "fan",
+            "off"
+          ]
+        },
+        "temperature": {
+          "type": "integer",
+          "description": "Target temperature"
+        }
+      }
+    },
+    "Light": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "integer"
+        },
+        "switch": {
+          "type": "string",
+          "description": "Currently on or off",
+          "enum": [
+            "on",
+            "off"
+          ]
+        }
+      }
+    }
+  }
+}

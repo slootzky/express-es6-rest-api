@@ -5,7 +5,8 @@ import bodyParser from 'body-parser';
 import api from './api/v1';
 import config from './config.json';
 import 'source-map-support/register';
-
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../swagger.json';
 
 let app = express();
 
@@ -27,6 +28,9 @@ app.use('/api/v1', api);
 app.get('/isAlive',(req,res) =>{
   res.send('true');
 });
+
+// swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const port = process.env.PORT || config.port;
 app.listen(port, () => {
