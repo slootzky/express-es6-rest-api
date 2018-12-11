@@ -24,8 +24,10 @@ devicesStateRoute.patch('/:deviceId/:state', async ({ body, params: { deviceId, 
     const newState = { ...oldState, ...nestedStateObject };
     await switchDeviceState(deviceIndex, newState);
     res.sendStatus(200);
+    return;
   } else {
     res.status(404).send('Device state not found');
+    return;
   }
 
   res.sendStatus(500);
