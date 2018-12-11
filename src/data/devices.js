@@ -5,4 +5,4 @@ const devices = [
   { id: '4', name: 'Master Bedroom A/C', type: 'air-conditioner' },
 ];
 
-export const getDevices = async _ => devices;
+export const getDevices = async () => devices;

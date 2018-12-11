@@ -1,6 +1,6 @@
 import { version } from '../../../package.json';
 import { Router } from 'express';
-import devicesRouter from './devicesRouter';
+import devicesRouter from './routes/devicesRouter';
 
 const api = Router();
 
