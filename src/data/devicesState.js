@@ -1,8 +1,8 @@
 let devicesState = [
-  { deviceId: '1', state: 'cool', temperature: '25' },
-  { deviceId: '2', state: 'on',color:'white' },
-  { deviceId: '3', state: 'on'},
-  { deviceId: '4', state: 'warm', temperature: '28' },
+  { deviceId: '1', state: { value: 'cool', type: 'picker', values: ['cool', 'warm', 'fan', 'off']}, temperature: { value: '19', type: 'range'} },
+  { deviceId: '2', switch: { value: 'on', type: 'switch'} },
+  { deviceId: '3', switch: { value: 'off', type: 'switch'} },
+  { deviceId: '4', state: { value: 'warm', type: 'picker', values: ['cool', 'warm', 'fan', 'off']}, temperature: { value: '26', type: 'range'} },
 ];
 
 export const getDevicesState = async _ => devicesState;
