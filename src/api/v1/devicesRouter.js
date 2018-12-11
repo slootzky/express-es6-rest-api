@@ -20,7 +20,7 @@ devicesStateRoute.patch('/:deviceId/:state', async ({ body, params: { deviceId, 
   if (deviceIndex > -1) {
     const oldState = (await getDevicesState())[deviceIndex];
     const stateChange = { [state]: { value: body} };
-    const newStateObject = { ...oldState[state], ...stateChange[state] }
+    const newStateObject = { [state]: { ...oldState[state], ...stateChange[state] }}
     const newState = { ...oldState, ...newStateObject };
     await switchDeviceState(deviceIndex, newState);
     res.sendStatus(200);
